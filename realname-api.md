@@ -8,47 +8,49 @@ Public API interface provided by bazar Realname service.
 
 ## API definition
 
+- API list
+
     |Url|Description|
     |-|-|
-    |[/Realname/RegisterUser](#RegisterUser)|register a user with realname information|
+    |[/Realname/RegisterUser](#registeruser)|register a user with realname information|
     |[/Realname/GetRegister](#getregister)|get register request of a user|
     |[/Realname/CancelRegister](#cancelregister)|cancel register request of a user|
     |[/Realname/UpdateUser](#updateuser)|update user realname info|
     |[/Realname/GetUserInfo](#getuserinfo)|get realname info of user|
 
-### RegisterUser
+- RegisterUser
 
-POST [RegisterRequest](#registerrequest)
+    POST [RegisterRequest](#registerrequest)
 
-RESPONSE [ApiResponse](#apiresponse)
+    RESPONSE [ApiResponse](#apiresponse)
 
-### GetRegister
+- GetRegister
 
-GET with queryString "?userID=xxxx"
+    GET with queryString "?userID=xxxx"
 
-RESPONSE ApiResponse
+    RESPONSE ApiResponse
 
-### CancelRegister
+- CancelRegister
 
-POST with queryString "?userID=xxxx"
+    POST with queryString "?userID=xxxx"
 
-RESPONSE ApiResponse
+    RESPONSE ApiResponse
 
-### UpdateUser
+- UpdateUser
 
-POST [RegisterRequest](#registerrequest)
+    POST [RegisterRequest](#registerrequest)
 
-RESPONSE ApiResponse
+    RESPONSE ApiResponse
 
-### GetUserInfo
+- GetUserInfo
 
-Get with queryString "?userID=xxxx"
+    Get with queryString "?userID=xxxx"
 
-RESPONSE ApiResponse<[UserRealnameInfo](#userrealnameinfo)>
+    RESPONSE ApiResponse<[UserRealnameInfo](#userrealnameinfo)>
 
 ## Entities
 
-### RegisterRequest
+- RegisterRequest
 
     | Field | FieldType | Required | Comment |
     |-|-|-|-|
@@ -57,14 +59,14 @@ RESPONSE ApiResponse<[UserRealnameInfo](#userrealnameinfo)>
     |socialUrl|varchar(100)|Y|social url for confirmation, user can post something with his existing social account to finish this realname authorization. |
     |advanceInfo|varchar(1000)|Y|advanced information to finish this realname authorization. |
 
-### UserRealnameInfo
+- UserRealnameInfo
 
     | Field | FieldType | Required | Comment |
     |-|-|-|-|
     |userID|char(30)|Y|userID in bazar system|
     |displayName|varchar(30)|Y|display name of this realname user|
 
-### ApiResponse
+- ApiResponse
 
     | Field | FieldType | Required | Comment |
     |-|-|-|-|
