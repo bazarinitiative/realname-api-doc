@@ -22,17 +22,17 @@ Public API interface provided by bazar Realname service.
 
     POST [RegisterRequest](#registerrequest)
 
-    RESPONSE [ApiResponse](#apiresponse)
+    RESPONSE [ApiResponse](#apiresponse)<string> with requestID
 
 - GetRegister
 
-    GET with queryString "?userID=xxxx"
+    GET with queryString "?requestID=xxxx&signature=xxxx"
 
-    RESPONSE ApiResponse
+    RESPONSE ApiResponse<[RegisterRequestDto](#RegisterRequestDto)>
 
 - CancelRegister
 
-    POST with queryString "?userID=xxxx"
+    POST with queryString "?requestID=xxxx&signature=xxxx"
 
     RESPONSE ApiResponse
 
@@ -50,7 +50,11 @@ Public API interface provided by bazar Realname service.
 
 ## Entities
 
+
+
 - RegisterRequest
+
+    This is a commandConntent inside [UserCommand](https://github.com/bazarinitiative/bazar-protocol-doc/blob/main/BazarProtocol.md#Command)
 
     | Field | FieldType | Required | Comment |
     |-|-|-|-|
@@ -58,6 +62,17 @@ Public API interface provided by bazar Realname service.
     |displayName|varchar(30)|Y|display name of this realname user|
     |socialUrl|varchar(100)|Y|social url for confirmation, user can post something with his existing social account to finish this realname authorization. |
     |advanceInfo|varchar(1000)|Y|advanced information to finish this realname authorization. |
+
+- RegisterRequestDto
+    | Field | FieldType | Required | Comment |
+    |-|-|-|-|
+    |requestID|varchar(30)|uniqueID for this request|
+    |userID|char(30)|Y|userID in bazar system|
+    |displayName|varchar(30)|Y|display name of this realname user|
+    |socialUrl|varchar(100)|Y|social url for confirmation, user can post something with his existing social account to finish this realname authorization. |
+    |advanceInfo|varchar(1000)|Y|advanced information to finish this realname authorization. |
+    |requstTime|long|timestamp in milli|
+    |status|char|I: init, P: processing, F: failed, S: succeed|
 
 - UserRealnameInfo
 
